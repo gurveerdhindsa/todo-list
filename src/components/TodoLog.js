@@ -11,11 +11,10 @@ class TodoLog extends Component {
 
     delete(key) {
         this.props.delete(key);
-
     }
 
     render() {
-        var listItems = this.props.items.map(item => <li className="todo"
+        var listItems = this.props.items.map(item => <li className="todo animated fadeInDown"
                                                          onClick={() => this.delete(item.key)}
                                                          key={item.key}>{item.text}</li>)
 
