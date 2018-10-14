@@ -13,11 +13,10 @@ class TodoList extends Component {
         this.inputField = React.createRef();
 
         this.addItem = this.addItem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     addItem(e) {
-        e.preventDefault();
-
         var input = this.inputField.current.value
 
         if (input !== "") {
@@ -30,19 +29,33 @@ class TodoList extends Component {
                 return {
                     todoItems: prevState.todoItems.concat(newTodoItem)
                 };
-            })
+            });
         }
+
+        //Reset input field
+        this.inputField.current.value = "";
+
+        //Prevent form reload
+        e.preventDefault();
+    }
+
+    deleteItem(key) {
+        this.setState({
+            todoItems: this.state.todoItems.filter(todoItem => todoItem.key !== key)
+        });
     }
 
     render() {
         return (
-            <div className="input-group">
+            <div className="todo-app">
                 <form className="todo-create" onSubmit={this.addItem}>
-                    <input type="text" className="form-control" placeholder="Enter a todo" ref={this.inputField}/>
-                    <button className="btn btn-default" type="submit">Go!</button>
+                    <input type="text" className="form-control todo-add" placeholder="Enter a todo" maxLength="100" ref={this.inputField}/>
                 </form>
 
-                <TodoLog items={this.state.todoItems}/>
+                <div className="todo-log">
+                    <TodoLog items={this.state.todoItems}
+                             delete={this.deleteItem}/>
+                </div>
             </div>
         );
     }
