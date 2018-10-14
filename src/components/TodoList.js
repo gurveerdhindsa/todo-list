@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styling/TodoList.css';
-import TodoItems from "./TodoLog";
+import TodoLog from "./TodoLog";
 
 class TodoList extends Component {
     constructor(props) {
@@ -42,10 +42,10 @@ class TodoList extends Component {
                     <button className="btn btn-default" type="submit">Go!</button>
                 </form>
 
-                <TodoLog entries={this.state.todoItems}/>
+                <TodoLog items={this.state.todoItems}/>
             </div>
         );
     }
 }
 
-export default TodoList;
+export default TodoList
