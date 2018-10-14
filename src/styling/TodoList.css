@@ -1,3 +1,15 @@
-.todo-create {
-    display: flex;
+.todo-add {
+    height: 50px;
+    width: 300px;
+    background-color: #3b3b3b;
+    border-color: #3b3b3b;
+    color: #36EEE0;
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+todo-log {
+    overflow-y:scroll;
 }
